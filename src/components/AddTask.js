@@ -17,10 +17,10 @@ import { Dropdown,} from 'react-dropdown-now';
 
 const AddTask = () => {
    
-    const [text, settext] = useState('');
-    const [checked, setchecked] = useState(false);
-    const [date, setdate] = useState(minDate);
-    const [editItem, seteditItem] = useState(false);
+    const [text1, setText1] = useState('');
+    const [checked1, setChecked1] = useState(false);
+    const [date, setDate] = useState(minDate);
+    const [editItem, setEditItem] = useState(false);
     
     const handleChange = (e) => {
         setItem(
@@ -29,8 +29,8 @@ const AddTask = () => {
     };
 
 
-   const handleText = (e) => {
-        settext(
+   const handleText1 = (e) => {
+        setText1(
             e.target.value
         )
     }
@@ -38,15 +38,15 @@ const AddTask = () => {
 
     // funkcja z kalendarza
     const handleDate = (e) => {
-        setdate(
+        setDate(
            e.target.value
         )
     }
     // przycisk ważne
 
     const handleCheckbox = (e) => {
-        setchecked(
-            e.target.checked
+        setChecked1(
+            e.target.checked1
         )
     }
     // metoda tworzy nowy obiekt i dodaje go 
@@ -54,11 +54,11 @@ const AddTask = () => {
         console.log("dodaj");
 
     
-        settext('')
-        setchecked(false),
+        setText1('')
+        setChecked1(false),
         // funkcja slice wycina elementy
-        setminDate(),
-        seteditItem (false)
+        setMinDate(),
+        setEditItem (false)
 
     };
    
@@ -97,25 +97,50 @@ const AddTask = () => {
 
     //   })
     // }
-    
+   //  {text, checked, date}
    
 // w tym miejscu jeśli chcielibyśmy napisać if(text) musielibyśmy odwołać się do stanu
-        const {text, checked, date} = state;
-        // a tutaj już nie musimy ;) length - długość
-        if(text.length >2) {
-        const add = props.add(text, date, checked)
+      //  const {text, checked, date} = state;
+      const [text2, setText2] = useState('');
+      const [date2, setDate2] = useState(minDate);
+      const [checked2, setChecked2] = useState(false);
+
+        
+        if(text2.length >2) {
+        const add = props.add(text2,date2,checked2)
         if(add){
-            setState({
-                text: '',
-                checked: false,
-                 minDate
-            })
-        }
-        } else {
+            
+            const handleText2 = (e) => {
+                setText2(
+                    e.target.value
+                )
+            }
+        
+        
+            // funkcja z kalendarza
+            const handleDate = (e) => {
+                setDate2(
+                   e.target.value
+                )
+            }
+            // przycisk ważne
+        
+            const handleCheckbox = (e) => {
+                setChecked2(
+                    e.target.checked1   
+                  )
+                }
+
+            
+            setText2(''),
+            setChecked2(false),
+            setDate2(minDate);
+        
+             } else {
             console.log("Dodaj zadanie zawierające min 3 znaki")
         }
-
-    }
+        
+    
 
 
 
